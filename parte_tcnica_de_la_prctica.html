@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_lightbox.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Parte técnica de la práctica | TFM_Exe </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Alberto López del Amo Gorgojo" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.7 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_lightbox.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-8"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">TFM_Exe</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">Prácticas Domotización del Aula</a></li>
+   <li><a href="organizacin.html" class="no-ch">Organización</a></li>
+   <li><a href="presentacin_terica_de_los_contenidos.html" class="no-ch">Presentación Teórica de los contenidos</a></li>
+   <li><a href="presentacin_prctica_de_la_actividad.html" class="no-ch">Presentación Práctica de la actividad</a></li>
+   <li id="active"><a href="parte_tcnica_de_la_prctica.html" class="active no-ch">Parte técnica de la práctica</a></li>
+   <li><a href="evaluacin.html" class="no-ch">Evaluación</a></li>
+   <li><a href="vdeo_recopilatorio.html" class="no-ch">Vídeo Recopilatorio</a></li>
+   <li><a href="memoria_de_trabajo.html" class="no-ch">Memoria de trabajo</a></li>
+   <li><a href="licencia.html" class="no-ch">Licencia</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="presentacin_prctica_de_la_actividad.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="evaluacin.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Parte técnica de la práctica</h1></header>
+<article class="iDevice_wrapper textIdevice" id="id21">
+<div class="iDevice emphasis0" >
+<div id="ta21_116_2" class="block iDevice_content">
+<div class="exe-text"><p>En este apartado, se va a añadir todo el procedimiento seguido para la correcta instalación de <em>Home Assistant</em> en una <em>Raspberry Pi</em>, y la preparación de cada microcontrolador <em>(ESP32</em> en este caso), con el código correspondiente a los sensores que se han utilizado.</p></div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id22">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Instalación Home Assistant</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta22_117_2" class="block iDevice_content">
+<div class="exe-text"><p>Para la instalación de <em>Home Assistant</em> en la <em>Raspberry Pi</em>, basta con seguir los pasos que vienen indicados en su <a href="https://www.home-assistant.io/installation/raspberrypi/">página web</a>.</p>
+<p>Tras realizar la configuración básica, se deben instalar los siguientes complementos (<em>add-ons</em>):</p>
+<ul>
+<li><em>File editor, </em>para realizar cualquier modificación/configuración desde el terminal.</li>
+<li><em>ESPHome</em>, con el que configurar y programas las <em>ESP32.</em></li>
+<li><em>NodeRED, </em>para la comunicación por <em>Telegram</em> o para hacer otro tipo de automatizaciones.</li>
+</ul>
+<p>Hay muchos más complementos al gusto del usuario.</p>
+<p>En mi caso, al no poder funcionar correctamente con la red WiFi de Andared, se debía de hacer una configuración especial para que funcionara con los datos móviles de mi <em>smartphone. </em>Bastaba con habilital el DHTP IPv4 de la configuración WiFi.</p>
+<p><em></em></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id23">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Pasos para añadir una ESP32</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta23_118_2" class="block iDevice_content">
+<div class="exe-text"><ol>
+<li>ESPHome --&gt; New device --&gt; Continue: esp-32 --&gt; Install.</li>
+<li>Manual --&gt; Legacy format --&gt; Close.</li>
+<li>Edit --&gt; Cambiamos el WiFi con su contraseña.</li>
+<li>Save --&gt; Install --&gt; Legacy format.</li>
+<li>Flash dispositivo con <em>ESPFlasher</em> y el <em>bin</em> que se genera.</li>
+<li>Se guarda el .yaml y se instala con el wifi desde HA.</li>
+<li>Si lo detecta HA: notificaciones/ajustes --&gt; dispositivos --&gt; seguir los pasos.
+<ol>
+<li>Si no lo detecta: ajustes --&gt; dispositivos --&gt; añadir dispositivo:<br />- De host name ponemos &lt;Nombre que le hayamos puesto(lo que sale en el .yaml)&gt;.local<br />- Contraseña la api key. --&gt; esp-32-c.local rcC26j....</li>
+</ol>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper GalleryIdevice em_iDevice em_iDevice_gallery" id="id19">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Códigos creados para la programación de las ESP32</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<ul class="exeImageGallery" id="exeImageGallery19">
+<li><a title="" href="code_bw.PNG"><img alt="" width="128" height="128" src="code_bwThumbnail.png" /><span class="tit"></span></a></li>
+<li><a title="" href="code_iron.PNG"><img alt="" width="128" height="128" src="code_ironThumbnail.png" /><span class="tit"></span></a></li>
+<li><a title="" href="code_super.PNG"><img alt="" width="128" height="128" src="code_superThumbnail.png" /><span class="tit"></span></a></li>
+<li><a title="" href="code_sw.PNG"><img alt="" width="128" height="128" src="code_swThumbnail.png" /><span class="tit"></span></a></li>
+<li><a title="" href="code_thor.PNG"><img alt="" width="128" height="128" src="code_thorThumbnail.png" /><span class="tit"></span></a></li>
+</ul>
+<script type="text/javascript">$exe.imageGallery.init("exeImageGallery19");</script>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id24">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Bot de Telegram</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta24_119_2" class="block iDevice_content">
+<div class="exe-text"><p><img src="BotFather-Icon.jpg" alt="" width="281" height="188" style="display: block; margin-left: auto; margin-right: auto;" /></p>
+<p style="text-align: justify;">Para hacer un <em>bot </em>de <em>Telegram, </em>se deben seguir los siguientes pasos:</p>
+<ol>
+<li style="text-align: justify;">Se busca en "contactos" de <em>Telegram </em>@botfather. A continuación se siguen las instrucciones que aparecen.</li>
+<li style="text-align: justify;">Para crear un nuevo bot, basta con poner el comando \newbot.<br />-Te pide el nombre, lo escribes.<br />-Te pide el username: XXXX_bot. En este caso, @Sototech_bot.<br />-En el siguiente mensaje aparece el API: HTTP API:18777.<br />-Pinchamos en el enlace que aparece: t.me/Sototech_bot</li>
+<li style="text-align: justify;"> \start en mi nuevo bot, y escribimos cualquier cosa: "Hola"</li>
+<li style="text-align: justify;">Buscamos en los contactos de <em>Telegram </em>chat id, y hacemos click en Chat ID Bot. Lo iniciamos.</li>
+<li style="text-align: justify;">Vamos a nuestro bot, click derecho sobre el mensaje y reenviar al chat ID y nos dará el chat ID, imprescindible para la conexión con <em>Home Assistant.</em><br />---- A continuación, debemos conectar el bot con <em>Home Assistant:</em></li>
+<li style="text-align: justify;"> Vamos <em>Home Assistant</em>, <em>File Editor</em>, <em>browse filesystem</em>, <em>configuration.yaml</em>.</li>
+<li style="text-align: justify;">Aquí se copia el código para Telegram:<br />-API KEY: 6299491649:AAHK...<br />-Chat ID permitidos: añadimos el chat ID que hemos obtenido de nuestro bot.</li>
+<li style="text-align: justify;"> En <em>Home Assistant --&gt; </em>Notificaciones:<br />-nombre: Sototech_bot, chad id: 4695...</li>
+<li style="text-align: justify;">Reiniciamos HA.</li>
+<li style="text-align: justify;">Herramientas desarrolladores - Servicios - notify. Ya podemos mandar mensajes.</li>
+</ol>
+<p>En mi caso, he realizado este procedimiento con el bot en un grupo de <em>Telegram, </em>así cualquiera puede unirse e interactuar con el bot.</p>
+<p>Por último, nos vamos a <em>NodeRED</em> y añadimos la paleta de <em>Telegram. </em>Desde aquí ya se pueden generar nuevos comandos fácilmente.</p>
+<p>En el <a href="https://www.youtube.com/watch?v=hCzrG0IrRjY&amp;ab_channel=Unlocoysutecnolog%C3%ADa">este vídeo</a> podéis encontrar uno de los muchos tutoriales para realizar este procedimiento.</p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Reconocimiento Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="presentacin_prctica_de_la_actividad.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="evaluacin.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_style_js.js"></script></body></html>
